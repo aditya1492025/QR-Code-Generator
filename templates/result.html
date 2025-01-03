@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Result</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(145deg, #141e30, #243b55);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            text-align: center;
+            background: #1c1c1e;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            width: 350px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ff6a00;
+        }
+
+        img {
+            margin: 20px 0;
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #ff6a00;
+            border-radius: 10px;
+        }
+
+        a, form button {
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(145deg, #ff6a00, #ff3f34);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.5);
+            border: none;
+            cursor: pointer;
+        }
+
+        a:hover, form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.7);
+        }
+
+        form {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your QR Code</h1>
+        <img src="data:image/png;base64,{{ qr_code }}" alt="Generated QR Code">
+        <form action="/download" method="POST">
+            <input type="hidden" name="data" value="{{ data }}">
+            <button type="submit">Download QR Code</button>
+            <button><a href="/">Generate Another</a></button>
+            <style>button{
+                margin: 10px;
+            }</style>
+        </form>
+        
+    </div>
+</body>
+</html>
